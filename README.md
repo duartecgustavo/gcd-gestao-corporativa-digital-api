@@ -155,34 +155,15 @@ A API inclui um sistema automatizado de notificações por e-mail para:
 - Sanitização de dados com class-validator
 - Tratamento adequado de erros
 
-### Melhorias Recomendadas
+## 🛠️ Próximas Melhorias
 
 - [ ] Autenticação JWT
 - [ ] Autorização baseada em papéis
 - [ ] Rate limiting
 - [ ] Implementação de HTTPS
-
-## 🛠️ Próximas Melhorias
-
-- [ ] **HATEOAS**: Links de navegação nas respostas
-- [ ] **Paginação avançada**: Metadados detalhados
-- [ ] **Padronização**: Formato único para respostas
 - [ ] **Monitoramento**: Logs e métricas (Prometheus/Grafana)
-- [ ] **Cache**: Sistema de cache para performance
-- [ ] **Testes E2E**: Testes end-to-end completos
+
 
 ## 📄 Licença
 
 Este projeto está sob a licença [MIT](LICENSE).
-
-## 🤝 Contribuição
-
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
----
-
-**Desenvolvido com ❤️ usando NestJS**
