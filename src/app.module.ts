@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import mailConfig from '../mail.config';
 import { EmpresaModule } from './empresa/empresa.module';
 import { NotificacoesModule } from './notificacoes/notificacoes.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { NotificacoesModule } from './notificacoes/notificacoes.module';
     EmpresaModule,
     NotificacoesModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}
