@@ -14,12 +14,12 @@ import mailConfig from 'mail.config';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      autoLoadEntities: true,
-      synchronize: true,
       ssl: {
         rejectUnauthorized: false,
       },
-    }),
+      autoLoadEntities: true,
+      synchronize: true,
+    });
     EmpresaModule,
     NotificacoesModule,
   ],
