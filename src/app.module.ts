@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import mailConfig from 'mail.config';
 import { EmpresaModule } from './empresa/empresa.module';
 import { NotificacoesModule } from './notificacoes/notificacoes.module';
-import { ConfigModule } from '@nestjs/config';
-import mailConfig from 'mail.config';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import mailConfig from 'mail.config';
         rejectUnauthorized: false,
       },
       autoLoadEntities: true,
-      synchronize: true, // apenas para dev, não use em produção
+      synchronize: true,
     }),
     EmpresaModule,
     NotificacoesModule,
