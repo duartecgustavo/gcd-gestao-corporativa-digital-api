@@ -18,8 +18,8 @@ import mailConfig from 'mail.config';
         rejectUnauthorized: false,
       },
       autoLoadEntities: true,
-      synchronize: true,
-    });
+      synchronize: true, // apenas para dev, não use em produção
+    }),
     EmpresaModule,
     NotificacoesModule,
   ],
