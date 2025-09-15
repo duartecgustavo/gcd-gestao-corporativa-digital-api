@@ -23,7 +23,6 @@ export class EmpresaService {
     data: Partial<Empresa>,
   ): Promise<{ message: string; status: string }> {
     try {
-      // Verifica se o CNPJ já está cadastrado
       const empresaExistente = await this.empresaRepository.findOne({
         where: { cnpj: data.cnpj },
       });
@@ -37,11 +36,9 @@ export class EmpresaService {
         });
       }
 
-      // Cria e salva a nova empresa
       const empresa = this.empresaRepository.create(data);
       const empresaSalva = await this.empresaRepository.save(empresa);
 
-      // Envia notificação de criação
       this.notificacoesService
         .enviarNotificacaoCriacaoEmpresa(empresaSalva)
         .catch((err) => {
@@ -59,7 +56,7 @@ export class EmpresaService {
       this.logger.error('Erro ao criar empresa:', error);
 
       if (error instanceof ConflictException) {
-        throw error; // Repassa o erro de conflito
+        throw error;
       }
 
       throw new Error(
@@ -73,7 +70,7 @@ export class EmpresaService {
     limite: number = 10,
   ): Promise<{
     data: Array<{
-      cnpj: number;
+      cnpj: string;
       nomeFantasia: string;
       endereco: string;
       criadoEm: Date;
@@ -139,7 +136,7 @@ export class EmpresaService {
   }
 
   async atualizar(
-    cnpj: number,
+    cnpj: string,
     data: Partial<Empresa>,
   ): Promise<{ message: string; status: string }> {
     try {
@@ -162,7 +159,7 @@ export class EmpresaService {
     }
   }
 
-  async excluir(cnpj: number): Promise<{ message: string; status: string }> {
+  async excluir(cnpj: string): Promise<{ message: string; status: string }> {
     try {
       const empresa = await this.encontrarEmpresaPorCnpj(cnpj);
       await this.empresaRepository.remove(empresa);
@@ -182,7 +179,7 @@ export class EmpresaService {
     }
   }
 
-  async encontrarEmpresaPorCnpj(cnpj: number): Promise<Empresa> {
+  async encontrarEmpresaPorCnpj(cnpj: string): Promise<Empresa> {
     try {
       const empresa = await this.empresaRepository.findOne({
         where: { cnpj: cnpj },

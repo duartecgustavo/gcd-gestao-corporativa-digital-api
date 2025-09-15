@@ -38,7 +38,7 @@ describe('EmpresaService', () => {
       {
         id: 1,
         nome: 'Empresa 1',
-        cnpj: 12345678901,
+        cnpj: '12345678901',
         nomeFantasia: 'Fantasia 1',
         endereco: 'Endereço 1',
         criadoEm: new Date('2023-01-01'),
@@ -47,7 +47,7 @@ describe('EmpresaService', () => {
       {
         id: 2,
         nome: 'Empresa 2',
-        cnpj: 98765432101,
+        cnpj: '98765432101',
         nomeFantasia: 'Fantasia 2',
         endereco: 'Endereço 2',
         criadoEm: new Date('2023-01-03'),
@@ -62,14 +62,14 @@ describe('EmpresaService', () => {
     expect(result).toEqual({
       data: [
         {
-          cnpj: 12345678901,
+          cnpj: '12345678901',
           nomeFantasia: 'Fantasia 1',
           endereco: 'Endereço 1',
           criadoEm: new Date('2023-01-01'),
           alteradoEm: new Date('2023-01-02'),
         },
         {
-          cnpj: 98765432101,
+          cnpj: '98765432101',
           nomeFantasia: 'Fantasia 2',
           endereco: 'Endereço 2',
           criadoEm: new Date('2023-01-03'),
@@ -97,7 +97,7 @@ describe('EmpresaService', () => {
     const mockEmpresa: Empresa = {
       id: 1,
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
       criadoEm: new Date(),
@@ -114,7 +114,7 @@ describe('EmpresaService', () => {
 
     const result = await service.criar({
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
     });
@@ -124,11 +124,11 @@ describe('EmpresaService', () => {
       status: 'success',
     });
     expect(repository.findOne).toHaveBeenCalledWith({
-      where: { cnpj: 12345678901 },
+      where: { cnpj: '12345678901' },
     });
     expect(repository.create).toHaveBeenCalledWith({
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
     });
@@ -142,7 +142,7 @@ describe('EmpresaService', () => {
     const mockEmpresa: Empresa = {
       id: 1,
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
       criadoEm: new Date(),
@@ -155,14 +155,14 @@ describe('EmpresaService', () => {
     await expect(
       service.criar({
         nome: 'Empresa Teste',
-        cnpj: 12345678901,
+        cnpj: '12345678901',
         nomeFantasia: 'Fantasia Teste',
         endereco: 'Endereço Teste',
       }),
     ).rejects.toThrow(ConflictException);
 
     expect(repository.findOne).toHaveBeenCalledWith({
-      where: { cnpj: 12345678901 },
+      where: { cnpj: '12345678901' },
     });
     expect(repository.save).not.toHaveBeenCalled(); // Verifica que save não foi chamado
   });
@@ -175,7 +175,7 @@ describe('EmpresaService', () => {
     await expect(
       service.criar({
         nome: 'Empresa Teste',
-        cnpj: 12345678901,
+        cnpj: '12345678901',
         nomeFantasia: 'Fantasia Teste',
         endereco: 'Endereço Teste',
       }),
@@ -186,7 +186,7 @@ describe('EmpresaService', () => {
     const mockEmpresa: Empresa = {
       id: 1,
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
       criadoEm: new Date(),
@@ -199,10 +199,10 @@ describe('EmpresaService', () => {
     jest.spyOn(repository, 'save').mockResolvedValue({
       ...mockEmpresa,
       nome: 'Empresa Atualizada',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
     });
 
-    const result = await service.atualizar(1, { nome: 'Empresa Atualizada' });
+    const result = await service.atualizar('1', { nome: 'Empresa Atualizada' });
 
     expect(result).toEqual({
       message: 'Empresa com CNPJ 1 foi atualizada com sucesso.',
@@ -211,7 +211,7 @@ describe('EmpresaService', () => {
     expect(repository.save).toHaveBeenCalledWith({
       ...mockEmpresa,
       nome: 'Empresa Atualizada',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
     });
   });
 
@@ -227,7 +227,7 @@ describe('EmpresaService', () => {
     jest.spyOn(repository, 'save').mockImplementation(jest.fn());
 
     await expect(
-      service.atualizar(1, { nome: 'Empresa Atualizada' }),
+      service.atualizar('1', { nome: 'Empresa Atualizada' }),
     ).rejects.toThrow(NotFoundException);
     expect(repository.save).not.toHaveBeenCalled();
   });
@@ -236,7 +236,7 @@ describe('EmpresaService', () => {
     const mockEmpresa: Empresa = {
       id: 1,
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
       criadoEm: new Date(),
@@ -248,7 +248,7 @@ describe('EmpresaService', () => {
       .mockResolvedValue(mockEmpresa);
     jest.spyOn(repository, 'remove').mockResolvedValue(mockEmpresa);
 
-    const result = await service.excluir(1);
+    const result = await service.excluir('1');
 
     expect(result).toEqual({
       message: 'Empresa com CNPJ 12345678901 foi excluída com sucesso.',
@@ -268,7 +268,7 @@ describe('EmpresaService', () => {
 
     jest.spyOn(repository, 'remove').mockImplementation(jest.fn());
 
-    await expect(service.excluir(1)).rejects.toThrow(NotFoundException);
+    await expect(service.excluir('1')).rejects.toThrow(NotFoundException);
     expect(repository.remove).not.toHaveBeenCalled();
   });
 
@@ -276,7 +276,7 @@ describe('EmpresaService', () => {
     const mockEmpresa: Empresa = {
       id: 1,
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
       criadoEm: new Date('2023-01-01'),
@@ -285,19 +285,19 @@ describe('EmpresaService', () => {
 
     jest.spyOn(repository, 'findOne').mockResolvedValue(mockEmpresa);
 
-    const result = await service.encontrarEmpresaPorCnpj(12345678901);
+    const result = await service.encontrarEmpresaPorCnpj('12345678901');
 
     expect(result).toEqual({
       id: 1,
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
       criadoEm: new Date('2023-01-01'),
       alteradoEm: new Date('2023-01-02'),
     });
     expect(repository.findOne).toHaveBeenCalledWith({
-      where: { cnpj: 12345678901 },
+      where: { cnpj: '12345678901' },
     });
   });
 });

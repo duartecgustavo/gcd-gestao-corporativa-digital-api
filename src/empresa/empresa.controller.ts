@@ -180,7 +180,7 @@ export class EmpresaController {
       },
     },
   })
-  async encontrarEmpresaPorCnpj(@Param('cnpj') cnpj: number) {
+  async encontrarEmpresaPorCnpj(@Param('cnpj') cnpj: string) {
     return this.empresaService.encontrarEmpresaPorCnpj(cnpj);
   }
 
@@ -240,7 +240,7 @@ export class EmpresaController {
     },
   })
   async atualizar(
-    @Param('cnpj') cnpj: number,
+    @Param('cnpj') cnpj: string,
     @Body() data: AtualizarEmpresaDto,
   ) {
     return this.empresaService.atualizar(cnpj, data);
@@ -275,7 +275,7 @@ export class EmpresaController {
       },
     },
   })
-  async excluir(@Param('cnpj') cnpj: number) {
+  async excluir(@Param('cnpj') cnpj: string) {
     return this.empresaService.excluir(cnpj);
   }
 }

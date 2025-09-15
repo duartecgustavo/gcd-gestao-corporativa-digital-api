@@ -16,7 +16,7 @@ export class CriarEmpresaDto {
   })
   @IsNotEmpty({ message: 'O CNPJ é obrigatório.' })
   @IsNumber()
-  cnpj: number;
+  cnpj: string;
 
   @ApiProperty({
     description: 'Nome fantasia da empresa',

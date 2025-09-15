@@ -36,7 +36,7 @@ describe('EmpresaController', () => {
   it('deve chamar o método criar do serviço', async () => {
     const dto = {
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
     };
@@ -50,18 +50,18 @@ describe('EmpresaController', () => {
   });
 
   it('deve chamar o método encontrarEmpresaPorCnpj do serviço', async () => {
-    await controller.encontrarEmpresaPorCnpj(1);
-    expect(service.encontrarEmpresaPorCnpj).toHaveBeenCalledWith(1);
+    await controller.encontrarEmpresaPorCnpj('1');
+    expect(service.encontrarEmpresaPorCnpj).toHaveBeenCalledWith('1');
   });
 
   it('deve chamar o método atualizar do serviço', async () => {
-    const dto = { nome: 'Empresa Atualizada', cnpj: 12345678901 };
-    await controller.atualizar(1, dto);
-    expect(service.atualizar).toHaveBeenCalledWith(1, dto);
+    const dto = { nome: 'Empresa Atualizada', cnpj: '12345678901' };
+    await controller.atualizar('1', dto);
+    expect(service.atualizar).toHaveBeenCalledWith('1', dto);
   });
 
   it('deve chamar o método excluir do serviço', async () => {
-    await controller.excluir(1);
-    expect(service.excluir).toHaveBeenCalledWith(1);
+    await controller.excluir('1');
+    expect(service.excluir).toHaveBeenCalledWith('1');
   });
 });

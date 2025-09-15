@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class AtualizarEmpresaDto {
   @IsOptional()
@@ -6,8 +6,8 @@ export class AtualizarEmpresaDto {
   nome?: string;
 
   @IsNotEmpty({ message: 'O CNPJ é obrigatório.' })
-  @IsNumber()
-  cnpj: number;
+  @IsString()
+  cnpj: string;
 
   @IsOptional()
   @IsString({ message: 'O nome fantasia deve ser uma string.' })

@@ -12,11 +12,13 @@ import mailConfig from 'mail.config';
       load: [mailConfig],
     }),
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'database.sqlite',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
+      autoLoadEntities: true,
       synchronize: true,
-      logging: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     }),
     EmpresaModule,
     NotificacoesModule,

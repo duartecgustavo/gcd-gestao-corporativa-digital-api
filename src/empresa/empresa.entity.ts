@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, Matches } from 'class-validator';
+import { IsNotEmpty, IsString, Matches } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -19,9 +19,8 @@ export class Empresa {
 
   @Column({ unique: true })
   @IsNotEmpty({ message: 'O CNPJ é obrigatório.' })
-  @IsNumber()
   @Matches(/^\d{14}$/, { message: 'CNPJ deve ter 14 dígitos numéricos.' })
-  cnpj: number;
+  cnpj: string;
 
   @Column()
   @IsNotEmpty({ message: 'O nome fantasia é obrigatório.' })
@@ -33,9 +32,9 @@ export class Empresa {
   @IsString()
   endereco: string;
 
-  @CreateDateColumn({ type: 'datetime' })
+  @CreateDateColumn()
   criadoEm: Date;
 
-  @UpdateDateColumn({ type: 'datetime' })
+  @UpdateDateColumn()
   alteradoEm: Date;
 }

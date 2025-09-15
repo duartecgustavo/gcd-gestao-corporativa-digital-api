@@ -35,7 +35,7 @@ describe('NotificacoesService', () => {
     const mockEmpresa: Empresa = {
       id: 1,
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
       criadoEm: new Date(),
@@ -56,7 +56,7 @@ describe('NotificacoesService', () => {
     const mockEmpresa: Empresa = {
       id: 1,
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
       criadoEm: new Date(),
@@ -75,7 +75,7 @@ describe('NotificacoesService', () => {
     const mockEmpresa: Empresa = {
       id: 1,
       nome: 'Empresa Teste',
-      cnpj: 12345678901,
+      cnpj: '12345678901',
       nomeFantasia: 'Fantasia Teste',
       endereco: 'Endereço Teste',
       criadoEm: new Date(),
